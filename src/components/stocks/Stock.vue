@@ -20,9 +20,9 @@
           <button
             class="btn btn-succes"
             @click="buyStock"
-            :disabled="quantity <= 0 || !Number.isInteger(quantity)"
+            :disabled="insufficientFunds || quantity <= 0 || !Number.isInteger(quantity)"
           >
-            Buy
+            {{ insufficientFunds ? 'Insufficient Funds' : 'Buy' }}
           </button>
         </div>
       </div>
@@ -37,6 +37,14 @@
     data() {
       return {
         quantity: 0
+      }
+    },
+    computed: {
+      funds() {
+        return this.$store.getters.funds;
+      },
+      insufficientFunds() {
+        return this.quantity * this.stock.price > this.funds;
       }
     },
     methods: {
