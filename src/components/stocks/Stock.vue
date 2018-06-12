@@ -14,6 +14,7 @@
             class="form-control"
             placeholder="Quantity"
             v-model="quantity"
+            :class="{danger: insufficientunds}"
           >
         </div>
         <div class="pull-right">
@@ -30,6 +31,12 @@
   </div>
 
 </template>
+
+<style scoped>
+.danger {
+  border: 1px solid red;
+}
+</style>
 
 <script>
   export default {
