@@ -45,7 +45,7 @@
       return {
         isDropdownOpen: false,
       }
-    }
+    },
     computed: {
       funds() {
         return this.$store.getters.funds;
